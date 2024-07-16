@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<canvas id="myCanvas" width="500" height="500" style="border:2px solid #d3d3d3;"></canvas>
+
+<script type="text/javascript">
+  const canvas = document.getElementById("myCanvas");
+  const ctx = canvas.getContext("2d");
+
+
+
+const getRandomInRange = (min, max) => {
+    return Math.random() * (max - min) + min;
+  };
+
+  const TOTAL_POINTS = 50;
+
+  const points = [];
+  for (let i = 0; i < TOTAL_POINTS; i++) {
+    points.push({
+      x: getRandomInRange(0, canvas.width),
+      y: getRandomInRange(0, canvas.height)
+    });
+  }
+
+  const drawPoint = point => {
+    ctx.beginPath();
+    ctx.strokeStyle = "rgb(255 0 0 / 50%)";
+    ctx.fillStyle = "rgb(255 0 0 / 50%)";
+    ctx.arc(point.x, point.y, 3, 0, 2 * Math.PI);
+    ctx.fill();
+  };
+
+  points.forEach(point => {
+    drawPoint(point);
+  });
+
+
+  setInterval(function(){
+  window.location.reload(false);
+  },5000);
+</script>
+</body>
+</html>
